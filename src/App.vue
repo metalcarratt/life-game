@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <div class="panel left">
-      <fieldset>
-        {{ intelligence }} x <font-awesome-icon icon="brain" />
-      </fieldset>
-      <fieldset>
-        {{ strength }} x <font-awesome-icon icon="dumbbell" />
-      </fieldset>
-    </div>
+    <Stats class="panel left" />
 
     <img src="./assets/baby.jpg" />
 
     <div class="panel right">
+      <fieldset>
+        <label>Age: {{ age }}</label>
+      </fieldset>
       <fieldset>
         <label>{{ time }} x </label>
         <TimeCard />
@@ -19,35 +15,55 @@
     </div>
 
     <div class="panel bottom">
-      <Button name="Observe" :cost="2" @click.native="observe" />
-      <Button name="Roll over" :cost="2" @click.native="rollOver" />
+      <Button
+        :action="action"
+        @click.native="clickAction(action)"
+        v-for="(action, actionIndex) in actions"
+        :key="actionIndex"
+      />
+      <!-- <Button name="Wriggle" :cost="2" @click.native="wriggle" /> -->
     </div>
 
+    <Popup v-if="showPopup" :actionResult="lastAction" />
   </div>
 </template>
 
 <script>
 import TimeCard from '@/components/TimeCard.vue';
 import Button from '@/components/Button.vue';
+import Popup from '@/components/Popup.vue';
+import Stats from '@/components/Stats.vue';
+
+import actions from '@/js/actions.js';
+import stats from '@/js/stats.js';
 
 export default {
   name: 'App',
-  components: { TimeCard, Button },
+  components: { TimeCard, Button, Popup, Stats },
   data() {
     return {
-      time: 52,
-      intelligence: 0,
-      strength: 0
+      showPopup: false,
+      lastAction: {
+        name: ""
+      }
     }
   },
+  computed: {
+    age: () => stats.age(),
+    time: () => stats.time(),
+    actions: () => actions.actions.filter(action => action.allowed()),
+  },
   methods: {
-    observe() {
-      this.time = this.time - 2;
-      this.intelligence = this.intelligence + 1;
-    },
-    rollOver() {
-      this.time = this.time - 2;
-      this.strength = this.strength + 1;
+    clickAction(action) {
+      const updates = action.updates;
+      stats.update(updates);
+      this.lastAction = action;
+
+
+      this.showPopup = true;
+      setTimeout(() => {
+        this.showPopup = false;
+      }, 400);
     }
   }
 }
@@ -74,13 +90,6 @@ img {
   width: 300px;
   display: inline-block;
   vertical-align: top;
-}
-
-.panel.left {
-  background-color: #ffda4a;
-  border: 1px solid #25256a;
-  margin-right: 10px;
-  margin-bottom: 10px;
 }
 
 .panel.bottom {
