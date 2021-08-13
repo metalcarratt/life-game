@@ -1,1 +1,1 @@
-GIT_SSH_COMMAND="ssh -i  /f//.ssh/id_rsa_mc" git push
+GIT_SSH_COMMAND="ssh -i  /c/Users/calebg/.ssh/id_rsa_mc" git push

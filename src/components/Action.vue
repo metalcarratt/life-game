@@ -1,5 +1,5 @@
 <template>
-    <div class="button">
+    <div class="action">
         <label>{{ action.name }}</label>
         <img :src="getImgUrl(action)" />
         {{ action.cost }} x <TimeCard />
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.button {
+.action {
     display: inline-block;
     vertical-align: top;
     width: 100px;
@@ -35,18 +35,18 @@ export default {
     margin-right: 10px;
 }
 
-.button:hover {
+.action:hover {
     cursor: pointer;
     background-color: #9a9ab5;
     border: none;
 }
 
-.button label {
+.action label {
     font-size: 12px;
     font-weight: 700;
 }
 
-.button img {
+.action img {
     max-width: 100px;
     border-width: 1px;
 }

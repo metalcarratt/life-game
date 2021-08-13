@@ -15,7 +15,7 @@
     </div>
 
     <div class="panel bottom">
-      <Button
+      <Action
         :action="action"
         @click.native="clickAction(action)"
         v-for="(action, actionIndex) in actions"
@@ -30,7 +30,7 @@
 
 <script>
 import TimeCard from '@/components/TimeCard.vue';
-import Button from '@/components/Button.vue';
+import Action from '@/components/Action.vue';
 import Popup from '@/components/Popup.vue';
 import Stats from '@/components/Stats.vue';
 
@@ -39,7 +39,7 @@ import stats from '@/js/stats.js';
 
 export default {
   name: 'App',
-  components: { TimeCard, Button, Popup, Stats },
+  components: { TimeCard, Action, Popup, Stats },
   data() {
     return {
       showPopup: false,
