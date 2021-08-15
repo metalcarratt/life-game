@@ -5,6 +5,8 @@
         <p v-if="actionResult.updates.intelligence">+{{ actionResult.updates.intelligence }} intelligence</p>
         <p v-if="actionResult.updates.coordination">+{{ actionResult.updates.coordination }} coordination</p>
         <p v-if="actionResult.updates.social">+{{ actionResult.updates.social }} social</p>
+
+        <button @click="$emit('close')">Close</button>
     </div>
 </template>
 
@@ -25,6 +27,8 @@ export default {
     position: absolute;
     top: 200px;
     left: calc(50% - 200px);
+
+    box-shadow: 0px 0px 10px black;
 }
 
 h1 {

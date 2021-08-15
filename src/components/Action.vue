@@ -2,17 +2,17 @@
     <div class="action">
         <label>{{ action.name }}</label>
         <img :src="getImgUrl(action)" />
-        {{ action.cost }} x <TimeCard />
+        <!-- {{ action.cost }} x <TimeCard /> -->
     </div>
 </template>
 
 <script>
-import TimeCard from '@/components/TimeCard.vue';
+// import TimeCard from '@/components/TimeCard.vue';
 
 
 export default {
     props: ['action'],
-    components: { TimeCard },
+    // components: { TimeCard },
     methods: {
         getImgUrl(action) {
             return require('../assets/' + action.image);
@@ -26,7 +26,7 @@ export default {
     display: inline-block;
     vertical-align: top;
     width: 100px;
-    height: 140px;
+    height: 115px;
     background-color: #c9c9ec;
     padding: 8px;
     border-radius: 8px;

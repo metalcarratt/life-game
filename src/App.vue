@@ -24,7 +24,7 @@
       <!-- <Button name="Wriggle" :cost="2" @click.native="wriggle" /> -->
     </div>
 
-    <Popup v-if="showPopup" :actionResult="lastAction" />
+    <Popup v-if="showPopup" :actionResult="lastAction" @close="showPopup = false" />
   </div>
 </template>
 
@@ -61,9 +61,9 @@ export default {
 
 
       this.showPopup = true;
-      setTimeout(() => {
-        this.showPopup = false;
-      }, 400);
+      // setTimeout(() => {
+      //   this.showPopup = false;
+      // }, 400);
     }
   }
 }
@@ -77,6 +77,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  width: 850px;
+  margin: 0 auto;
 }
 
 img {
@@ -87,7 +89,7 @@ img {
 
 .panel.right, .panel.left {
   height: 300px;
-  width: 300px;
+  width: 280px;
   display: inline-block;
   vertical-align: top;
 }
