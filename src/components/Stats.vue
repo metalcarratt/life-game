@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
 .stats {
-  background-color: #ffda4a;
+  background-color: #fff3c3;
   border: 1px solid #25256a;
   margin-right: 10px;
   margin-bottom: 10px;

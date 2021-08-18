@@ -6,7 +6,7 @@
         <p v-if="actionResult.updates.coordination">+{{ actionResult.updates.coordination }} coordination</p>
         <p v-if="actionResult.updates.social">+{{ actionResult.updates.social }} social</p>
 
-        <button @click="$emit('close')">Close</button>
+        <button @click="$emit('close')">Okay</button>
     </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
 <style scoped>
 .popup {
     width: 400px;
-    height: 180px;
+    height: 200px;
     background-color: #fff55e;
     border: 3px solid #f42929;;
     border-radius: 20px;
@@ -40,5 +40,21 @@ p {
     font-size: 24px;
     color: #4c789f;
     margin: 5px;
+}
+
+button {
+    width: calc(100% - 20px);
+    margin: 10px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid blue;
+    background-color: #b7c1ea;
+    font-size: 16px;
+    color: #1c2a44;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #7b83a4;
 }
 </style>
